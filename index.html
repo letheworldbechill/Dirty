@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>NavigoOrdnung - Erweiterte Version</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>NavigoOrdnung - Erweiterte Version</h1>
+    <button id="settings-button">Einstellungen</button>
+  </header>
+
+  <!-- Toolbar für Modus, Zoom, Rotation -->
+  <div id="toolbar">
+    <button id="mode-toggle">Modus: Interaktion</button>
+    <button id="zoom-in">Zoom +</button>
+    <button id="zoom-out">Zoom -</button>
+    <button id="rotate-btn">Drehen</button>
+  </div>
+
+  <main>
+    <div class="grid-wrapper" id="grid-wrapper">
+      <div id="grid-container"></div>
+      <div class="mode-indicator" id="mode-indicator">Interaktionsmodus</div>
+    </div>
+  </main>
+
+  <!-- Modal für Einstellungen -->
+  <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-modal">&times;</span>
+      
+      <!-- Tabs oben: "Gitter" / "Räume" -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="gridTab">Gitter-Einstellungen</button>
+        <button class="tab-btn" data-tab="roomsTab">Räume</button>
+      </div>
+      
+      <!-- Tab-Inhalte -->
+      <div class="tab-content active" id="gridTab">
+        <h2>Gitter-Einstellungen</h2>
+        <label for="grid-rows">Anzahl Reihen:</label>
+        <input type="number" id="grid-rows" min="1" max="50">
+        <label for="grid-cols">Anzahl Spalten:</label>
+        <input type="number" id="grid-cols" min="1" max="50">
+        <button id="apply-grid-size">Größe Anwenden</button>
+        
+        <div style="margin-top: 1em;">
+          <label for="daily-reset-time">Täglicher Reset (Stunde):</label>
+          <input type="number" id="daily-reset-time" min="0" max="23" value="2">
+          <button id="save-reset-time">Zeit Speichern</button>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="roomsTab">
+        <h2>Räume verwalten</h2>
+        <div class="rooms-list" id="rooms-list"></div>
+        
+        <div class="room-actions">
+          <input type="text" id="new-room-name" placeholder="Name des neuen Raumes">
+          <button id="create-room-btn">Raum erstellen (ausgewählte Zellen)</button>
+        </div>
+        <p class="hint">
+          <strong>Hinweis:</strong> Wechsle in den „Bearbeitungsmodus“, klicke die Zellen an, 
+          die zu einem Raum gehören sollen, und klicke dann auf „Raum erstellen“.
+        </p>
+      </div>
+      
+      <button id="save-settings" class="save-btn">Einstellungen speichern</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
